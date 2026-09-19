@@ -1,0 +1,72 @@
+// PertGanttManager U++ project file
+
+# U++ project file
+
+# Main package
+PertGanttManager {
+    # Source files
+    src/Main.cpp
+    
+    # Model classes
+    src/Model/Project.h
+    src/Model/Project.cpp
+    src/Model/Task.h
+    src/Model/Task.cpp
+    src/Model/Resource.h
+    src/Model/Resource.cpp
+    src/Model/Dependency.h
+    src/Model/Dependency.cpp
+    
+    # Database classes
+    src/Database/DatabaseManager.h
+    src/Database/DatabaseManager.cpp
+    
+    # UI classes
+    src/UI/Dialogs/MainWindow.h
+    src/UI/Dialogs/MainWindow.cpp
+    src/UI/Dialogs/ProjectDialog.h
+    src/UI/Dialogs/ProjectDialog.cpp
+    src/UI/Dialogs/TaskDialog.h
+    src/UI/Dialogs/TaskDialog.cpp
+    src/UI/Dialogs/ResourceDialog.h
+    src/UI/Dialogs/ResourceDialog.cpp
+    
+    # Diagram classes
+    src/UI/Diagrams/PertDiagram.h
+    src/UI/Diagrams/PertDiagram.cpp
+    src/UI/Diagrams/GanttDiagram.h
+    src/UI/Diagrams/GanttDiagram.cpp
+    
+    # Form classes
+    src/UI/Forms/ProjectForm.h
+    src/UI/Forms/ProjectForm.cpp
+    src/UI/Forms/TaskForm.h
+    src/UI/Forms/TaskForm.cpp
+    src/UI/Forms/ResourceForm.h
+    src/UI/Forms/ResourceForm.cpp
+    
+    # Algorithm classes
+    src/Algorithms/Scheduler.h
+    src/Algorithms/Scheduler.cpp
+    src/Algorithms/CircularDependencyChecker.h
+    src/Algorithms/CircularDependencyChecker.cpp
+    
+    # Export classes
+    src/Export/Exporter.h
+    src/Export/Exporter.cpp
+    src/Export/PNGExporter.h
+    src/Export/PNGExporter.cpp
+    src/Export/QTFExporter.h
+    src/Export/QTFExporter.cpp
+    src/Export/PowerPointExporter.h
+    src/Export/PowerPointExporter.cpp
+    
+    # Layout files
+    lay/MainWindow.lay
+    lay/ProjectForm.lay
+    lay/TaskForm.lay
+    lay/ResourceForm.lay
+    
+    # Required U++ packages
+    plugin: Core, Draw, CtrlLib, Sqlite3
+}

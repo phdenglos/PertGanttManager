@@ -1,0 +1,83 @@
+LAYOUT(TaskFormLayout, 500, 400, "Task Properties")
+{
+    Group generalGroup {
+        Label "General Information"
+        
+        Grid 2 {
+            Label "Name:"
+            EditString nameEdit ^ NameEdit
+            
+            Label "Priority:"
+            DropList priorityEdit ^ PriorityEdit { "1 (Highest)"; "2"; "3"; "4"; "5 (Lowest)" }
+            
+            Label "Workload (person-days):"
+            EditDouble workloadEdit ^ WorkloadEdit { Min 0 }
+            
+            Label "Duration (days):"
+            EditInt durationEdit ^ DurationEdit { Min 1 }
+            
+            Label "Start Date:"
+            EditDate startDateEdit ^ StartDateEdit
+            
+            Label "End Date:"
+            EditDate endDateEdit ^ EndDateEdit
+            
+            Label "Progress (%):"
+            EditDouble progressEdit ^ ProgressEdit { Min 0; Max 100 }
+            
+            Label "Progress:"
+            Slider progressSlider ^ ProgressSlider { Min 0; Max 100 }
+            
+            Label "Color:"
+            ColorPusher colorEdit ^ ColorEdit
+        }
+    }
+    
+    Group dependenciesGroup {
+        Label "Dependencies"
+        
+        Grid 2 {
+            Label "Depends on:"
+            ArrayCtrl dependenciesArray ^ DependenciesArray { Frame None }
+            
+            Label ""
+            Button addDependencyButton ^ AddDependencyButton "Add Dependency"
+            
+            Label ""
+            Button removeDependencyButton ^ RemoveDependencyButton "Remove Selected"
+        }
+    }
+    
+    Group resourcesGroup {
+        Label "Resource Assignments"
+        
+        Grid 3 {
+            Label "Resource"
+            Label "Allocation (%)"
+            Label ""
+            
+            ArrayCtrl resourceArray ^ ResourceArray { Frame None; Column 0 "Resource" }
+            ArrayCtrl allocationArray ^ AllocationArray { Frame None; Column 0 "%" }
+            Button addResourceButton ^ AddResourceButton "Add"
+            
+            Button removeResourceButton ^ RemoveResourceButton "Remove Selected"
+        }
+    }
+    
+    Group positionGroup {
+        Label "Diagram Position"
+        
+        Grid 2 {
+            Label "X Position:"
+            EditDouble xPositionEdit ^ XPositionEdit
+            
+            Label "Y Position:"
+            EditDouble yPositionEdit ^ YPositionEdit
+        }
+    }
+    
+    ButtonBar {
+        Button okButton ^ OK "OK"
+        Button cancelButton ^ Cancel "Cancel"
+    }
+}

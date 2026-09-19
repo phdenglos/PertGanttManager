@@ -1,0 +1,108 @@
+LAYOUT(MainWindowLayout, 1000, 700, "PertGanttManager - Project Management")
+{
+    // Menu bar
+    MenuBar menu {
+        File {
+            "New Project" ^ NewProject
+            "Open Project..." ^ OpenProject
+            "Save Project" ^ SaveProject
+            "Save Project As..." ^ SaveProjectAs
+            SEPARATOR
+            "Import from JSON..." ^ ImportFromJson
+            "Export to JSON..." ^ ExportToJson
+            SEPARATOR
+            "Exit" ^ Exit
+        }
+        Edit {
+            "Undo" ^ Undo
+            "Redo" ^ Redo
+            SEPARATOR
+            "Cut" ^ Cut
+            "Copy" ^ Copy
+            "Paste" ^ Paste
+            SEPARATOR
+            "Delete" ^ Delete
+        }
+        View {
+            "PERT Diagram" ^ ShowPertDiagram
+            "Gantt Diagram" ^ ShowGanttDiagram
+            "Resource Profile" ^ ShowResourceProfile
+            SEPARATOR
+            "Zoom In" ^ ZoomIn
+            "Zoom Out" ^ ZoomOut
+            "Fit to Screen" ^ FitToScreen
+        }
+        Tools {
+            "Run Scheduler" ^ RunScheduler
+            "Check Circular Dependencies" ^ CheckCircularDependencies
+            SEPARATOR
+            "Export to PNG..." ^ ExportToPng
+            "Export to QTF..." ^ ExportToQtf
+            "Export to PowerPoint..." ^ ExportToPowerPoint
+        }
+        Help {
+            "About..." ^ About
+        }
+    }
+
+    // Tool bar
+    ToolBar toolbar {
+        Button ^ NewProject "New Project"
+        Button ^ OpenProject "Open Project"
+        Button ^ SaveProject "Save Project"
+        SEPARATOR
+        Button ^ RunScheduler "Run Scheduler"
+        SEPARATOR
+        Button ^ ShowPertDiagram "PERT"
+        Button ^ ShowGanttDiagram "Gantt"
+    }
+
+    // Status bar
+    StatusBar status {
+        Spring
+        Label statusLabel "Ready"
+    }
+
+    // Main area
+    Splitter splitter H {
+        // Project tree panel
+        Splitter leftPanel V {
+            Group projectGroup {
+                Label "Projects"
+                DropList projectList ^ ProjectList
+            }
+            
+            Group taskGroup {
+                Label "Tasks"
+                ArrayCtrl taskArray ^ TaskArray { Frame None }
+            }
+            
+            Group resourceGroup {
+                Label "Resources"
+                ArrayCtrl resourceArray ^ ResourceArray { Frame None }
+            }
+        } | 200
+        
+        // Diagram area
+        TabCtrl diagramTabs {
+            Tab PERT {
+                PertDiagram pertDiagram ^ PertDiagram
+            }
+            Tab Gantt {
+                GanttDiagram ganttDiagram ^ GanttDiagram
+            }
+        }
+    }
+
+    // Progress dialog (hidden by default)
+    TopWindow progressDialog {
+        Title "Processing..."
+        Size 400 150
+        
+        ProgressBar progressBar ^ ProgressBar
+        Label progressLabel ^ ProgressLabel
+        Button cancelButton ^ CancelButton "Cancel"
+        
+        Hidden
+    }
+}

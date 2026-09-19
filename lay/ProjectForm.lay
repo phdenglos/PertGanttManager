@@ -1,0 +1,46 @@
+LAYOUT(ProjectFormLayout, 400, 300, "Project Properties")
+{
+    Group generalGroup {
+        Label "General Information"
+        
+        Grid 2 {
+            Label "Name:"
+            EditString nameEdit ^ NameEdit
+            
+            Label "Description:"
+            EditString descriptionEdit ^ DescriptionEdit { MultiLine }
+            
+            Label "Created:"
+            EditDateTime createdDateEdit ^ CreatedDateEdit { Disabled }
+            
+            Label "Updated:"
+            EditDateTime updatedDateEdit ^ UpdatedDateEdit { Disabled }
+        }
+    }
+    
+    Group statisticsGroup {
+        Label "Project Statistics"
+        
+        Grid 2 {
+            Label "Total Tasks:"
+            EditInt totalTasksEdit ^ TotalTasksEdit { Disabled }
+            
+            Label "Total Resources:"
+            EditInt totalResourcesEdit ^ TotalResourcesEdit { Disabled }
+            
+            Label "Total Workload:"
+            EditDouble totalWorkloadEdit ^ TotalWorkloadEdit { Disabled }
+            
+            Label "Completed Workload:"
+            EditDouble completedWorkloadEdit ^ CompletedWorkloadEdit { Disabled }
+            
+            Label "Overall Progress:"
+            EditDouble overallProgressEdit ^ OverallProgressEdit { Disabled }
+        }
+    }
+    
+    ButtonBar {
+        Button okButton ^ OK "OK"
+        Button cancelButton ^ Cancel "Cancel"
+    }
+}

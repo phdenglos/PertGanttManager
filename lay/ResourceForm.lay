@@ -1,0 +1,34 @@
+LAYOUT(ResourceFormLayout, 400, 250, "Resource Properties")
+{
+    Group generalGroup {
+        Label "General Information"
+        
+        Grid 2 {
+            Label "Name:"
+            EditString nameEdit ^ NameEdit
+            
+            Label "Max Utilization (%):"
+            EditDouble maxUtilizationEdit ^ MaxUtilizationEdit { Min 0; Max 100 }
+            
+            Label "Description:"
+            EditString descriptionEdit ^ DescriptionEdit { MultiLine }
+        }
+    }
+    
+    Group utilizationGroup {
+        Label "Utilization Profile"
+        
+        Grid 2 {
+            Label "Current Tasks:"
+            ArrayCtrl currentTasksArray ^ CurrentTasksArray { Frame None }
+            
+            Label ""
+            Button viewProfileButton ^ ViewProfileButton "View Profile"
+        }
+    }
+    
+    ButtonBar {
+        Button okButton ^ OK "OK"
+        Button cancelButton ^ Cancel "Cancel"
+    }
+}
